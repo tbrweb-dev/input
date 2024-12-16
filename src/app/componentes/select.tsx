@@ -1,28 +1,45 @@
 'use client'
 
-import React from 'react';
-import { UseFormRegister } from 'react-hook-form';
+import { ErrorMessage } from "@hookform/error-message"
+import { Path, useForm, UseFormRegister } from "react-hook-form"
+import React, { forwardRef } from "react"
 
-type SelectProps = {
-  label: string;
-  register: UseFormRegister<any>; // Use 'any' instead of the IFormValues type
-  required: boolean;
-};
+interface IFormValues {
+  "texto": string
+  Date: string
+}
 
-const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ label, register, required }, ref) => (
-    <>
-      <label>{label}</label>
-      <select {...register(label, { required })} ref={ref}>
-        <option value="20">20</option>
-        <option value="30">30</option>
-      </select>
-    </>
-  )
+type InputProps = {
+  label: Path<IFormValues>
+  register: UseFormRegister<IFormValues>
+
+}
+
+const InputC = forwardRef<HTMLInputElement, InputProps>(
+  ({ label, register, ...rest }: InputProps, ref) => {
+    const { formState: { errors } } = useForm<IFormValues>();
+
+    return (
+      <>
+        <div className="m-4 p-4">
+          <label>{label}</label>
+          <input
+            className="border-2 border-black"
+            {...rest}
+            {...register(label, {
+              
+              minLength: { value: 3, message: "tamanho minino de 3 letras." },
+              maxLength: { value: 30, message: "tamanho maximo de 30 letras." },
+            })}
+            ref={ref} // Pass the ref here
+          />
+          <ErrorMessage errors={errors} name={label} />
+        </div>
+      </>
+    );
+  }
 );
 
-Select.displayName = 'Select'; // Necessary when using forwardRef
+InputC.displayName = "InputC"; // Optional: setting displayName for debugging
 
-export default Select;
-
-
+export default InputC;

@@ -1,37 +1,42 @@
 'use client'
 
+
+
+
 import { Path, UseFormRegister } from "react-hook-form"
 
 interface IFormValues {
-"texto": string
+  "texto": string
   Date: string
   "number": number 
   Time:string
-
 }
 
 type InputProps = {
   label: Path<IFormValues>
   register: UseFormRegister<IFormValues>
-  
+
 }
 
 
-export default function InputData({ label, register,...rest  }: InputProps) { 
+export default function InputTime({ label, register,...rest }: InputProps) { 
   
-  
+
   
   return(
 
 <>
-<div className="m-4">
 
-<label className="m-4">{label}</label>
-    <input type="date"{...rest} {...register(label, {  
-    valueAsDate: true,
-   })} />
+<div className="m-4 p-4"><label> {label} </label>
+<label className="m-4"></label>
+    <input type="time"{...rest} {...register(label,)} />
 
 
+
+
+
+
+  
 </div>
     
   </>

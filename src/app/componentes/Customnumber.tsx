@@ -16,24 +16,23 @@ interface IFormValues {
 type InputProps = {
   label: Path<IFormValues>
   register: UseFormRegister<IFormValues>
-
+ 
 }
 
 
-export default function InputText({ label, register,...rest }: InputProps) { 
+export default function InputNumber({ label, register,...rest }: InputProps) { 
   
- 
+
   
   return(
 
 <>
 
 <div className="m-4 p-4"><label> {label} </label>
-<input className="border-2 border-black" {...rest} {...register(label,  { minLength:{value: 3,
-            message: "tamanho minino de 3 letras."}, maxLength: {
+<input type="number" className="border-2 border-black" {...rest} {...register(label,  {  maxLength: {
             value: 30,
-            message: "tamanho maximo de 30 letras.",
-          }, }) } />
+            message: "tamanho maximo de 30 numeros.", 
+          },}) } />
 
 
 
