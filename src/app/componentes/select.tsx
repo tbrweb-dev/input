@@ -24,7 +24,7 @@ const InputC = forwardRef<HTMLInputElement, InputProps>(
         <div className="m-4 p-4">
           <label>{label}</label>
           <input
-            className="border-2 border-black"
+            className="border-2 border-black a"
             {...rest}
             {...register(label, {
               

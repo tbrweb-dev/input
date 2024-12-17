@@ -42,6 +42,7 @@ export default function Home() {
     <ErrorMessage errors={errors} name={"number"} />
     <InputData label="Date" register={register} /> 
     <InputTime label="Time" register={register} /> 
+    
     {/* <InputNar0n  name="firstName" type="text" {...register('firstName')} /> */}
 
 
