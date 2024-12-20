@@ -7,7 +7,7 @@ import { Path, UseFormRegister } from "react-hook-form"
 
 interface IFormValues {
   "texto": string
-  Date: string
+  Date: Date
   "number": number 
   Time:string
 }
@@ -29,7 +29,7 @@ export default function InputTime({ label, register,...rest }: InputProps) {
 
 <div className="m-4 p-4"><label> {label} </label>
 <label className="m-4"></label>
-    <input type="time"{...rest} {...register(label,)} />
+    <input type="time"{...rest} {...register(label, ) } />
 
 
 

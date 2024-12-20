@@ -7,7 +7,7 @@ import { Path, UseFormRegister } from "react-hook-form"
 
 interface IFormValues {
   "texto": string
-  Date: string
+  Date: Date
   "number": number 
   Time:string
 
@@ -29,11 +29,9 @@ export default function InputText({ label, register,...rest }: InputProps) {
 <>
 
 <div className="m-4 p-4"><label> {label} </label>
-<input className="border-2 border-black" {...rest} {...register(label,  { minLength:{value: 3,
-            message: "tamanho minino de 3 letras."}, maxLength: {
-            value: 30,
-            message: "tamanho maximo de 30 letras.",
-          }, }) } />
+<input className="border-2 border-black" {...rest} {...register(label, {
+   value: 'aaaaaaaaa',
+  } ) } />
 
 
 

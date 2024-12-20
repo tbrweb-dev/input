@@ -7,7 +7,7 @@ import { Path, UseFormRegister } from "react-hook-form"
 
 interface IFormValues {
   "texto": string
-  Date: string
+  Date: Date
   "number": number 
   Time:string
 
