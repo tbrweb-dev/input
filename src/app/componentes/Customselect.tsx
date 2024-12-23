@@ -1,11 +1,11 @@
 import React from 'react';
-import { UseFormRegister, FieldErrors, Controller } from 'react-hook-form';
+import { Control, FieldErrors, Controller } from 'react-hook-form';
 import Select from 'react-select';
 
 interface InputSelectGroupProps {
   label: string; // Label for the input
   options: string[]; // Options to be displayed in the select dropdown
-  register: UseFormRegister<any>;
+  control: Control<any>; // Control object from react-hook-form
   name: string; // The name field used to register the input with React Hook Form
   multiple?: boolean; // Option to allow multiple selections (react-select handles this)
   errors?: FieldErrors; // Validation errors
@@ -14,7 +14,7 @@ interface InputSelectGroupProps {
 const InputSelectGroup: React.FC<InputSelectGroupProps> = ({
   label,
   options,
-  register,
+  control,
   name,
   multiple = false,
   errors,
@@ -30,7 +30,7 @@ const InputSelectGroup: React.FC<InputSelectGroupProps> = ({
       {/* Use Controller to wrap the react-select for proper react-hook-form integration */}
       <Controller
         name={name}
-        control={register}
+        control={control}  // Use control passed from parent
         rules={{
           validate: value => value && value.length > 0 ? true : 'Please select a valid option'
         }}

@@ -10,9 +10,6 @@ import InputCheckboxGroup from './componentes/CustomInputcheck';
 import InputSelectGroup from './componentes/Customselect';
 import InputSearch from './componentes/customsearch';
 import InputTextarea from './componentes/customtextarea';
-import TagSelect from './componentes/Customselect';
-import Select from 'react-select/base';
-import { colourOptions } from '../data';
 
 
 
@@ -70,7 +67,7 @@ export default function Home() {
         label="Select Colors"
         options={['Red', 'Green', 'Blue', 'Yellow']}
         name="colors"
-        register={control}
+        control={control}  // Pass control here (not register)
         multiple={true}  // Enable multi-select
         errors={errors}  // Pass errors to display them
       />
