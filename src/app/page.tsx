@@ -10,6 +10,9 @@ import InputCheckboxGroup from './componentes/CustomInputcheck';
 import InputSelectGroup from './componentes/Customselect';
 import InputSearch from './componentes/customsearch';
 import InputTextarea from './componentes/customtextarea';
+import TagSelect from './componentes/Customselect';
+import Select from 'react-select/base';
+import { colourOptions } from '../data';
 
 
 
@@ -18,7 +21,8 @@ interface IFormValues {
    Date: Date
    "number": number 
    Time:string
-  
+   "checkbox": string[]
+
 }
 
 
@@ -27,7 +31,7 @@ interface IFormValues {
 
 export default function Home() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormValues>({
+  const { register,control, handleSubmit, formState: { errors } } = useForm<IFormValues>({
     criteriaMode: "all",
   }); 
 
@@ -41,8 +45,14 @@ export default function Home() {
     console.log(errors);
   };
   
+  
+
+
+
   return (
 
+
+ 
 
     <form onSubmit={handleSubmit(onSubmit)}>
     <InputTextarea label="Textarea" register={register}  />
@@ -57,13 +67,13 @@ export default function Home() {
       } name="selectedOptions1" />
     
     <InputSelectGroup
-        label="Select Options"
-        options={['a', 'b', 'c','d,','e']}
-        register={register}
-        name="selectedOptions2" // Field name for the select input
-        multiple={true} // Allow multiple selections
+        label="Select Colors"
+        options={['Red', 'Green', 'Blue', 'Yellow']}
+        name="colors"
+        register={control}
+        multiple={true}  // Enable multi-select
+        errors={errors}  // Pass errors to display them
       />
-
     
     {/* <InputNar0n  name="firstName" type="text" {...register('firstName')} /> */}
 
