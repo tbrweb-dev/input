@@ -15,11 +15,13 @@ const InputSelectGroup: React.FC<InputSelectGroupProps> = ({
   register,
   name,
   multiple = false, // Default to false if not provided
+  ...rest
 }) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
       <select
+      {...rest}
         id={name}
         {...register(name)}
         multiple={multiple} // Allow multiple selections if true
