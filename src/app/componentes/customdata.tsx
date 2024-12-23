@@ -1,25 +1,16 @@
 'use client'
 
 import { useState } from "react"
-import { Path, UseFormRegister } from "react-hook-form"
-
-interface IFormValues {
-"texto": string
-  Date: Date
-  "number": number 
-  Time:string
+import { UseFormRegister } from "react-hook-form"
 
 
+interface InputCheckboxGroupProps {
+  label: string;
+  register: UseFormRegister<any>;
 }
 
-type InputProps = {
-  label: Path<IFormValues>
-  register: UseFormRegister<IFormValues>
+const InputData: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}) => {
   
-}
-
-
-export default function InputData({ label, register,...rest  }: InputProps) { 
   
   const [dateVariable, setDateVariable] = useState(new Date());
   
@@ -47,3 +38,5 @@ export default function InputData({ label, register,...rest  }: InputProps) {
   </>
 
   )    } 
+
+  export default InputData

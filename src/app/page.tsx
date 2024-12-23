@@ -7,8 +7,9 @@ import InputText from './componentes/CustomInput';
 import InputNumber from './componentes/Customnumber';
 import InputTime from './componentes/Customtime';
 import InputCheckboxGroup from './componentes/CustomInputcheck';
-import Inputselec from './componentes/CustomInpu';
-import InputSelectGroup from './componentes/CustomInpu';
+import InputSelectGroup from './componentes/Customselect';
+import InputSearch from './componentes/customsearch';
+import InputTextarea from './componentes/customtextarea';
 
 
 
@@ -44,6 +45,8 @@ export default function Home() {
 
 
     <form onSubmit={handleSubmit(onSubmit)}>
+    <InputTextarea label="Textarea" register={register}  />
+    <InputSearch label="search" register={register}  />
     <InputText label="texto" register={register}  />
     <ErrorMessage errors={errors} name={"texto"} />
     <InputNumber label="number" register={register}  />
@@ -51,13 +54,13 @@ export default function Home() {
     <InputData label="Date" register={register} /> 
     <InputTime label="Time" register={register} /> 
     <InputCheckboxGroup label={['option1', 'option2', 'option3']} options={['Option 1', 'Option 2', 'Option 3 ' ]} register={register
-      } name="selectedOptions" />
+      } name="selectedOptions1" />
     
     <InputSelectGroup
         label="Select Options"
-        options={['a', 'b', 'c','d,','e','f']}
+        options={['a', 'b', 'c','d,','e']}
         register={register}
-        name="selectedOptions" // Field name for the select input
+        name="selectedOptions2" // Field name for the select input
         multiple={true} // Allow multiple selections
       />
 

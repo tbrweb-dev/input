@@ -3,25 +3,16 @@
 
 
 
-import { Path, UseFormRegister } from "react-hook-form"
+import { UseFormRegister } from "react-hook-form"
 
-interface IFormValues {
-  "texto": string
-  Date: Date
-  "number": number 
-  Time:string
-
+interface InputCheckboxGroupProps {
+  label: string;
+  register: UseFormRegister<any>;
 }
 
-type InputProps = {
-  label: Path<IFormValues>
-  register: UseFormRegister<IFormValues>
- 
-}
-
-
-export default function InputNumber({ label, register,...rest }: InputProps) { 
+const InputNumber: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}) => {
   
+
 
   
   return(
@@ -46,3 +37,5 @@ export default function InputNumber({ label, register,...rest }: InputProps) {
   </>
 
   )    } 
+
+  export default InputNumber

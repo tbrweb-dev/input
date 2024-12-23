@@ -10,7 +10,7 @@ interface InputCheckboxGroupProps {
   register: UseFormRegister<any>;
 }
 
-const InputText: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}) => {
+const InputTextarea: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}) => {
   
  
   
@@ -19,8 +19,8 @@ const InputText: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}
 <>
 
 <div className="m-4 p-4"><label> {label} </label>
-<input  className="border-2 border-black" {...rest} {...register(label, {
-   value: 'aaaaaaaaa',
+<textarea  className="border-2 border-black" {...rest} {...register(label, {
+   value: 'area de texto sem regras ',
   } ) } />
 
 
@@ -36,4 +36,4 @@ const InputText: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}
 
   )    } 
 
-  export default InputText
+  export default InputTextarea
