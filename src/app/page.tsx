@@ -7,9 +7,11 @@ import InputText from './componentes/CustomInput';
 import InputNumber from './componentes/Customnumber';
 import InputTime from './componentes/Customtime';
 import InputCheckboxGroup from './componentes/CustomInputcheck';
-import InputSelectGroup from './componentes/Customselect';
 import InputSearch from './componentes/customsearch';
 import InputTextarea from './componentes/customtextarea';
+import InputSelectGroup from './componentes/Customselect';
+import MultiSelectInput from './componentes/Customselect2';
+
 
 
 
@@ -22,7 +24,12 @@ interface IFormValues {
 
 }
 
-
+const options = [
+  { label: 'Option 1', value: 'option1' },
+  { label: 'Option 2', value: 'option2' },
+  { label: 'Option 3', value: 'option3' },
+  { label: 'Option 4', value: 'option4' },
+];
 
 
 
@@ -63,18 +70,38 @@ export default function Home() {
     <InputCheckboxGroup label={['option1', 'option2', 'option3']} options={['Option 1', 'Option 2', 'Option 3 ' ]} register={register
       } name="selectedOptions1" />
     
-    <InputSelectGroup
+    {/* <InputSelectGroup
         label="Select Colors"
         options={['Red', 'Green', 'Blue', 'Yellow']}
         name="colors"
         control={control}  // Pass control here (not register)
         multiple={true}  // Enable multi-select
         errors={errors}  // Pass errors to display them
-      />
+      /> */}
+
+
+
+{/* <InputSelectGroup
+        label="Select Colors"
+        options={['Red', 'Green', 'Blue', 'Yellow']}
+        name="colors"
+        control={control}  // Pass control here (not register)
+        multiple={true}  // Enable multi-select
+        errors={errors}  // Pass errors to display them
+      /> */}
     
     {/* <InputNar0n  name="firstName" type="text" {...register('firstName')} /> */}
 
+    <h2 className="text-xl font-bold mb-4">Select Your Options</h2>
 
+{/* MultiSelectInput component */}
+
+<MultiSelectInput
+  name="selectedOptions"
+  control={control}
+  options={options}
+  placeholder="Choose multiple options"
+/>
     
 
     <input className='px-4' type="submit" />
