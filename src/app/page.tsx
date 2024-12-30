@@ -57,16 +57,16 @@ export default function Home() {
         id="Textarea"
         label="Textarea"
         register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle "
+        classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
         classnameinput="border-2 border-black  px-5"
         classnamelabel="my-auto"
       />
       <InputSearch
         label="search"
         register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle "
-        classnameinput="border-2 border-black px-5"
-        classnamelabel="my-auto mr-3"
+        classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
+        classnameinput="border-2 border-black  px-5"
+        classnamelabel="my-auto"
       />
       <InputText
         label="texto"
