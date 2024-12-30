@@ -54,7 +54,7 @@ export default function Home() {
         label="Textarea"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "
-        classnameinput="border-2 border-black px-5"
+        classnameinput="border-2 border-black  px-5"
         classnamelabel="my-auto"
       />
       <InputSearch
@@ -111,7 +111,10 @@ export default function Home() {
         placeholder="Choose multiple options"
       />
 
-      <button className=" mx-5 my-2 px-4 rounded-xl bg-slate-400 " type="submit">
+      <button
+        className=" mx-5 my-2 px-4 rounded-xl bg-slate-400 "
+        type="submit"
+      >
         {' '}
         enviar{' '}
       </button>

@@ -9,6 +9,7 @@ interface InputCheckboxGroupProps {
   classnamelabel: string;
   classnameinput: string;
   id: string;
+  setValueAs?: string;
   initialvalue: string;
 }
 
@@ -18,6 +19,7 @@ const InputTextarea: React.FC<InputCheckboxGroupProps> = ({
   classnamelabel,
   classnameinput,
   initialvalue,
+  setValueAs,
   id,
   register,
   ...rest
