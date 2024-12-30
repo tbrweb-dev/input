@@ -30,6 +30,7 @@ const InputTextarea: React.FC<InputCheckboxGroupProps> = ({
           {label}{' '}
         </label>
         <textarea
+          id={id}
           className={classnameinput}
           {...rest}
           {...register(id, {
