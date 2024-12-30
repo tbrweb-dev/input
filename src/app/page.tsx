@@ -19,6 +19,7 @@ interface IFormValues {
   Date: Date;
   number: number;
   Time: string;
+  Textarea: string;
   checkbox: string[];
 }
 
@@ -35,6 +36,7 @@ export default function Home() {
     control,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<IFormValues>({
     criteriaMode: 'all',
   });
@@ -45,6 +47,8 @@ export default function Home() {
     alert(JSON.stringify(res)); // Show form data as an alert
     console.log(errors);
   };
+
+
 
   return (
     <form className="" onSubmit={handleSubmit(onSubmit)}>
@@ -116,8 +120,18 @@ export default function Home() {
         type="submit"
       >
         {' '}
-        enviar{' '}
+        enviar normal{' '}
       </button>
+
+     {/* SetValue button */}
+     <button
+        type="button"
+        onClick={() => setValue("Textarea", 'Updated Value')}
+        className="mx-5 my-2 px-4 rounded-xl bg-blue-400"
+      >
+        Set Value
+      </button>
+
     </form>
   );
 }
