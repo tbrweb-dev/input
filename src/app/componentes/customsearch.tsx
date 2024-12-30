@@ -1,39 +1,41 @@
-'use client'
+'use client';
 
-
-
-
-import {  UseFormRegister } from "react-hook-form"
+import { UseFormRegister } from 'react-hook-form';
 
 interface InputCheckboxGroupProps {
   label: string;
+  classnamediv: string;
+  classnamelabel: string;
+  classnameinput: string;
   register: UseFormRegister<any>;
 }
 
-const InputSearch: React.FC<InputCheckboxGroupProps> = ({ label, register,...rest}) => {
-  
- 
-  
-  return(
+const InputSearch: React.FC<InputCheckboxGroupProps> = ({
+  label,
+  register,
+  classnamediv,
+  classnamelabel,
+  classnameinput,
+  ...rest
+}) => {
+  return (
+    <>
+      <div className={classnamediv}>
+        <label htmlFor={label} className={classnamelabel}>
+          {' '}
+          {label}{' '}
+        </label>
+        <input
+          type="search"
+          className={classnameinput}
+          {...rest}
+          {...register(label, {
+            value: 'area de pesquisa',
+          })}
+        />
+      </div>
+    </>
+  );
+};
 
-<>
-
-<div className="m-4 p-4"><label> {label} </label>
-<input type="search" className="border-2 border-black" {...rest} {...register(label, {
-   value: 'area de pesquisa',
-  } ) } />
-
-
-
-
-
-
-
-  
-</div>
-    
-  </>
-
-  )    } 
-
-  export default InputSearch
+export { InputSearch };

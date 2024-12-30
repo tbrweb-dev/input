@@ -23,10 +23,17 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Handle adding/removing options
-  const handleSelectOption = (option: OptionType, selectedOptions: OptionType[]) => {
-    const isSelected = selectedOptions.some((selected) => selected.value === option.value);
+  const handleSelectOption = (
+    option: OptionType,
+    selectedOptions: OptionType[]
+  ) => {
+    const isSelected = selectedOptions.some(
+      (selected) => selected.value === option.value
+    );
     if (isSelected) {
-      return selectedOptions.filter((selected) => selected.value !== option.value);
+      return selectedOptions.filter(
+        (selected) => selected.value !== option.value
+      );
     } else {
       return [...selectedOptions, option];
     }
@@ -74,11 +81,18 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
 
               <div className="border p-2 rounded-lg flex flex-wrap gap-2 items-center bg-white">
                 {selectedOptions.map((option) => (
-                  <div key={option.value} className="flex items-center bg-gray-200 p-1 rounded-md">
+                  <div
+                    key={option.value}
+                    className="flex items-center bg-gray-200 p-1 rounded-md"
+                  >
                     <span>{option.label}</span>
                     <button
                       type="button"
-                      onClick={() => handleChange(handleDeleteOption(option.value, selectedOptions))}
+                      onClick={() =>
+                        handleChange(
+                          handleDeleteOption(option.value, selectedOptions)
+                        )
+                      }
                       className="ml-2 text-red-500 hover:text-red-700"
                     >
                       ×
@@ -94,8 +108,13 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                   onBlur={handleInputBlur}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && inputValue.trim()) {
-                      const newOption = { label: inputValue, value: inputValue.toLowerCase() };
-                      handleChange(handleSelectOption(newOption, selectedOptions));
+                      const newOption = {
+                        label: inputValue,
+                        value: inputValue.toLowerCase(),
+                      };
+                      handleChange(
+                        handleSelectOption(newOption, selectedOptions)
+                      );
                       setInputValue(''); // Clear input after selecting
                     }
                   }}
@@ -108,14 +127,18 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                   <ul className="py-1">
                     {options
                       .filter((option) =>
-                        option.label.toLowerCase().includes(inputValue.toLowerCase())
+                        option.label
+                          .toLowerCase()
+                          .includes(inputValue.toLowerCase())
                       )
                       .map((option) => (
                         <li
                           key={option.value}
                           className="px-4 py-2 cursor-pointer hover:bg-blue-100"
                           onClick={() => {
-                            handleChange(handleSelectOption(option, selectedOptions));
+                            handleChange(
+                              handleSelectOption(option, selectedOptions)
+                            );
                             setInputValue('');
                             setIsDropdownOpen(false); // Close dropdown after selection
                           }}
@@ -134,4 +157,4 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
   );
 };
 
-export default MultiSelectInput;
+export { MultiSelectInput };

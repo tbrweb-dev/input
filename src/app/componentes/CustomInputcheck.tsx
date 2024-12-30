@@ -1,35 +1,35 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { UseFormRegister } from 'react-hook-form';
-
-
-
 
 interface InputCheckboxGroupProps {
   label: string[];
   options: string[];
   register: UseFormRegister<any>;
   name: string;
-  
 }
 
-const InputCheckboxGroup: React.FC<InputCheckboxGroupProps> = ({ label, options, register, name ,...rest}) => {
+const InputCheckboxGroup: React.FC<InputCheckboxGroupProps> = ({
+  label,
+  options,
+  register,
+  name,
+  ...rest
+}) => {
   return (
     <div>
       <div>
-        {options.map((option,index) => (
+        {options.map((option, index) => (
           <div key={option}>
             <label htmlFor={label[index]}>{option}</label>
-            <input 
-            {...rest}
-              type="checkbox" 
-              id={label[index]} 
-              value={option} 
+            <input
+              {...rest}
+              type="checkbox"
+              id={label[index]}
+              value={option}
               {...register(name)} // Register all options under the same name
             />
-            
-            
           </div>
         ))}
       </div>
@@ -37,4 +37,4 @@ const InputCheckboxGroup: React.FC<InputCheckboxGroupProps> = ({ label, options,
   );
 };
 
-export default InputCheckboxGroup;
+export { InputCheckboxGroup };
