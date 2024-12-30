@@ -111,7 +111,7 @@ export default function Home() {
         placeholder="Choose multiple options"
       />
 
-      <button className="px-4" type="submit">
+      <button className=" mx-5 my-2 px-4 rounded-xl bg-slate-400 " type="submit">
         {' '}
         enviar{' '}
       </button>
