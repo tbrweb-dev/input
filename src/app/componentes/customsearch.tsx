@@ -7,6 +7,7 @@ interface InputCheckboxGroupProps {
   classnamediv: string;
   classnamelabel: string;
   classnameinput: string;
+  initialvalue?: string;
   register: UseFormRegister<any>;
 }
 
@@ -15,6 +16,7 @@ const InputSearch: React.FC<InputCheckboxGroupProps> = ({
   register,
   classnamediv,
   classnamelabel,
+  initialvalue,
   classnameinput,
   ...rest
 }) => {
@@ -30,7 +32,7 @@ const InputSearch: React.FC<InputCheckboxGroupProps> = ({
           className={classnameinput}
           {...rest}
           {...register(label, {
-            value: 'area de pesquisa',
+            value: initialvalue,
           })}
         />
       </div>

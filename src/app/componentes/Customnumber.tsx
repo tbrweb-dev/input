@@ -7,6 +7,7 @@ interface InputCheckboxGroupProps {
   classnamediv: string;
   classnamelabel: string;
   classnameinput: string;
+  initialvalue?: number;
   register: UseFormRegister<any>;
 }
 
@@ -16,6 +17,7 @@ const InputNumber: React.FC<InputCheckboxGroupProps> = ({
   classnamediv,
   classnamelabel,
   classnameinput,
+  initialvalue,
   ...rest
 }) => {
   return (
@@ -26,6 +28,7 @@ const InputNumber: React.FC<InputCheckboxGroupProps> = ({
           {label}{' '}
         </label>
         <input
+          value={initialvalue}
           type="number"
           className={classnameinput}
           {...rest}

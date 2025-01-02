@@ -44,7 +44,7 @@ const InputData: React.FC<InputCheckboxGroupProps> = ({
           className={classnameinput}
           type="date"
           {...rest}
-          {...register(id, {
+          {...register(label, {
             value: formattedDate,
             onChange: handleDateChange,
           })}

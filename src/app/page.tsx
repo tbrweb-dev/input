@@ -5,7 +5,7 @@ import { ErrorMessage } from '@hookform/error-message';
 
 import { InputData } from './componentes/CustomDate';
 
-import { InputText } from './componentes/CustomInput';
+import { InputText } from './componentes/CustomText';
 import { InputCheckboxGroup } from './componentes/CustomInputCheck';
 import { InputNumber } from './componentes/CustomNumber';
 
@@ -19,8 +19,10 @@ interface IFormValues {
   Date: Date;
   number: number;
   Time: string;
+  search: string;
   Textarea: string;
   checkbox: string[];
+  select: string[];
 }
 
 const options = [
@@ -48,71 +50,76 @@ export default function Home() {
     console.log(errors);
   };
 
-
-
   return (
     <form className="" onSubmit={handleSubmit(onSubmit)}>
       <InputTextarea
-        initialvalue="o valor inicial "
-        id="Textarea"
-        label="Textarea"
+        id="areadetexto"
+        label="areadetexto"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
         classnameinput="border-2 border-black  px-5"
         classnamelabel="my-auto"
+        maxvalue={10}
       />
+      <ErrorMessage errors={errors} name={'areadetexto'} />
       <InputSearch
-        label="search"
+        label="pesquisa"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
         classnameinput="border-2 border-black  px-5"
         classnamelabel="my-auto"
       />
       <InputText
+        id="texto"
         label="texto"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "
         classnameinput="border-2 border-black px-5"
         classnamelabel="my-auto mr-6"
+        maxvalue={5}
       />
       <ErrorMessage errors={errors} name={'texto'} />
       <InputNumber
-        label="number"
+        label="numero"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "
         classnameinput="border-2 border-black px-5"
         classnamelabel="my-auto mr-1"
       />
-      <ErrorMessage errors={errors} name={'number'} />
+
       <InputData
-        id="date"
-        label="Date"
+        id="data"
+        label="Data"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "
         classnameinput="border-2 border-black px-5"
         classnamelabel="my-auto mr-6"
       />
       <InputTime
-        label="Time"
+        label="Tempo"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "
         classnameinput="border-2 border-black px-5"
-        classnamelabel="my-auto mr-6"
+        classnamelabel="my-auto mr-2"
       />
       <InputCheckboxGroup
-        label={['option1', 'option2', 'option3']}
-        options={['Option 1', 'Option 2', 'Option 3 ']}
+        label={['opção 1', 'opção 2', 'opção 3']}
+        options={['opção 1', 'opção 2', 'opção 3']}
         register={register}
-        name="selectedOptions1"
+        name="opcoesselecionadas"
+        classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg flex flex-col "
+        classnameinput="border-2 border-black  px-5 gap-2"
+        classnamelabel="my-auto m-2"
       />
 
-      <h2 className="text-xl font-bold mb-4">Select Your Options</h2>
-
       <MultiSelectInput
-        name="selectedOptions"
+        name="selecioneopcoes"
         control={control}
         options={options}
-        placeholder="Choose multiple options"
+        classnamediv="mt-5 mb-2 ml-5 pl-5  flex gap-4 align-middle "
+        classnameinput="mt-5 mb-2 ml-5 pl-5 border p-2 rounded-lg flex flex-wrap gap-2 items-center bg-white"
+        classnamelabel="block text-lg font-medium"
+        initialvalue="Escolha multiplas opções "
       />
 
       <button
@@ -123,15 +130,14 @@ export default function Home() {
         enviar normal{' '}
       </button>
 
-     {/* SetValue button */}
-     <button
+      {/* SetValue button */}
+      <button
         type="button"
-        onClick={() => setValue("Textarea", 'Updated Value')}
+        onClick={() => setValue('areadetexto', 'valor atualizado')}
         className="mx-5 my-2 px-4 rounded-xl bg-blue-400"
       >
         Set Value
       </button>
-
     </form>
   );
 }
