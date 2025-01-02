@@ -16,13 +16,12 @@ import { InputSearch } from './componentes/CustomSearch';
 
 interface IFormValues {
   texto: string;
-  Date: Date;
-  number: number;
-  Time: string;
-  search: string;
-  Textarea: string;
-  checkbox: string[];
-  select: string[];
+  Data: Date;
+  numero: number;
+  pesquisa: string;
+  areadetexto: string;
+  pesquisacaixa: string[];
+  selecioneopcoes: string[];
 }
 
 const options = [
@@ -44,7 +43,7 @@ export default function Home() {
   });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    const res: Date = new Date(data.Date);
+    const res: Date = new Date(data.Data);
     alert(JSON.stringify(data)); // Show form data as an alert
     alert(JSON.stringify(res)); // Show form data as an alert
     console.log(errors);
@@ -106,7 +105,7 @@ export default function Home() {
         label={['opção 1', 'opção 2', 'opção 3']}
         options={['opção 1', 'opção 2', 'opção 3']}
         register={register}
-        name="opcoesselecionadas"
+        name="pesquisacaixa"
         classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg flex flex-col "
         classnameinput="border-2 border-black  px-5 gap-2"
         classnamelabel="my-auto m-2"
