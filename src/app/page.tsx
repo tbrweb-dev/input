@@ -55,13 +55,14 @@ export default function Home() {
         id="areadetexto"
         label="areadetexto"
         register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
+        classnamediv="p-5 m-5  flex gap-4 align-middle    w-1/4 rounded-lg "
         classnameinput="border-2 border-black  px-5"
         classnamelabel="my-auto"
         maxvalue={10}
       />
       <ErrorMessage errors={errors} name={'areadetexto'} />
       <InputSearch
+        id="pesquisa"
         label="pesquisa"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
@@ -79,6 +80,7 @@ export default function Home() {
       />
       <ErrorMessage errors={errors} name={'texto'} />
       <InputNumber
+        id="numero"
         label="numero"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "
@@ -95,6 +97,7 @@ export default function Home() {
         classnamelabel="my-auto mr-6"
       />
       <InputTime
+        id="Tempo"
         label="Tempo"
         register={register}
         classnamediv="p-5 m-5  flex gap-4 align-middle "

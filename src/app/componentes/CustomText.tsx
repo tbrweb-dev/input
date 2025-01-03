@@ -34,6 +34,7 @@ const InputText: React.FC<InputCheckboxGroupProps> = ({
           {label}{' '}
         </label>
         <input
+          id={id}
           className={classnameinput}
           {...rest}
           {...register(label, {

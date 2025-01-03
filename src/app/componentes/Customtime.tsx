@@ -7,6 +7,7 @@ interface InputCheckboxGroupProps {
   classnamediv: string;
   classnamelabel: string;
   classnameinput: string;
+  id: string;
   register: UseFormRegister<any>;
 }
 
@@ -15,6 +16,7 @@ const InputTime: React.FC<InputCheckboxGroupProps> = ({
   classnamediv,
   classnamelabel,
   classnameinput,
+  id,
   register,
   ...rest
 }) => {
@@ -26,6 +28,7 @@ const InputTime: React.FC<InputCheckboxGroupProps> = ({
           {label}{' '}
         </label>
         <input
+          id={id}
           className={classnameinput}
           type="time"
           {...rest}
