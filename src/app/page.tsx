@@ -17,7 +17,7 @@ import { ToastContainer } from 'react-toastify';
 
 interface IFormValues {
   text: string;
-  Date: Date;
+  date: Date;
   number: number;
   search: string;
   textarea: string;
@@ -44,9 +44,7 @@ export default function Home() {
   });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    const res: Date = new Date(data.Date);
     alert(JSON.stringify(data)); // Show form data as an alert
-    alert(JSON.stringify(res)); // Show form data as an alert
     console.log(errors);
   };
 
