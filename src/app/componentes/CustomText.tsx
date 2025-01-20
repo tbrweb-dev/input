@@ -5,42 +5,42 @@ import { UseFormRegister } from 'react-hook-form';
 interface InputCheckboxGroupProps {
   label: string;
   register: UseFormRegister<any>;
-  classnamediv: string;
-  classnamelabel: string;
-  classnameinput: string;
-  initialvalue?: string;
-  maxvalue?: number;
-  minvalue?: number;
+  classnameDiv: string;
+  classnameLabel: string;
+  classnameInput: string;
+  initialValue?: string;
+  maxValue?: number;
+  minValue?: number;
   id: string;
 }
 
 const InputText: React.FC<InputCheckboxGroupProps> = ({
   label,
   register,
-  classnamediv,
-  classnamelabel,
-  classnameinput,
-  initialvalue,
-  maxvalue,
-  minvalue,
+  classnameDiv,
+  classnameLabel,
+  classnameInput,
+  initialValue,
+  maxValue,
+  minValue,
   id,
   ...rest
 }) => {
   return (
     <>
-      <div className={classnamediv}>
-        <label htmlFor={label} className={classnamelabel}>
+      <div className={classnameDiv}>
+        <label htmlFor={label} className={classnameLabel}>
           {' '}
           {label}{' '}
         </label>
         <input
           id={id}
-          className={classnameinput}
+          className={classnameInput}
           {...rest}
           {...register(label, {
-            value: initialvalue,
-            maxLength: { value: maxvalue, message: 'texto muito grande' },
-            minLength: { value: minvalue, message: 'texto muito curto' },
+            value: initialValue,
+            maxLength: { value: maxValue, message: 'texto muito grande' },
+            minLength: { value: minValue, message: 'texto muito curto' },
           })}
         />
       </div>

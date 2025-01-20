@@ -4,32 +4,32 @@ import { UseFormRegister } from 'react-hook-form';
 
 interface InputCheckboxGroupProps {
   label: string;
-  classnamediv: string;
-  classnamelabel: string;
-  classnameinput: string;
+  classnameDiv: string;
+  classnameLabel: string;
+  classnameInput: string;
   id: string;
   register: UseFormRegister<any>;
 }
 
 const InputTime: React.FC<InputCheckboxGroupProps> = ({
   label,
-  classnamediv,
-  classnamelabel,
-  classnameinput,
+  classnameDiv,
+  classnameLabel,
+  classnameInput,
   id,
   register,
   ...rest
 }) => {
   return (
     <>
-      <div className={classnamediv}>
-        <label htmlFor={label} className={classnamelabel}>
+      <div className={classnameDiv}>
+        <label htmlFor={label} className={classnameLabel}>
           {' '}
           {label}{' '}
         </label>
         <input
           id={id}
-          className={classnameinput}
+          className={classnameInput}
           type="time"
           {...rest}
           {...register(label)}

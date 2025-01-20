@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
@@ -13,15 +13,16 @@ import { MultiSelectInput } from './componentes/CustomSelect2';
 import { InputTime } from './componentes/CustomTime';
 import { InputTextarea } from './componentes/CustomTextarea';
 import { InputSearch } from './componentes/CustomSearch';
+import { ToastContainer } from 'react-toastify';
 
 interface IFormValues {
-  texto: string;
-  Data: Date;
-  numero: number;
-  pesquisa: string;
-  areadetexto: string;
-  pesquisacaixa: string[];
-  selecioneopcoes: string[];
+  text: string;
+  Date: Date;
+  number: number;
+  search: string;
+  textarea: string;
+  checkbox: string[];
+  select: string[];
 }
 
 const options = [
@@ -43,103 +44,109 @@ export default function Home() {
   });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    const res: Date = new Date(data.Data);
+    const res: Date = new Date(data.Date);
     alert(JSON.stringify(data)); // Show form data as an alert
     alert(JSON.stringify(res)); // Show form data as an alert
     console.log(errors);
   };
 
   return (
-    <form className="" onSubmit={handleSubmit(onSubmit)}>
-      <InputTextarea
-        id="areadetexto"
-        label="areadetexto"
-        register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle    w-1/4 rounded-lg "
-        classnameinput="border-2 border-black  px-5"
-        classnamelabel="my-auto"
-        maxvalue={10}
-      />
-      <ErrorMessage errors={errors} name={'areadetexto'} />
-      <InputSearch
-        id="pesquisa"
-        label="pesquisa"
-        register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
-        classnameinput="border-2 border-black  px-5"
-        classnamelabel="my-auto"
-      />
-      <InputText
-        id="texto"
-        label="texto"
-        register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle "
-        classnameinput="border-2 border-black px-5"
-        classnamelabel="my-auto mr-6"
-        maxvalue={5}
-      />
-      <ErrorMessage errors={errors} name={'texto'} />
-      <InputNumber
-        id="numero"
-        label="numero"
-        register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle "
-        classnameinput="border-2 border-black px-5"
-        classnamelabel="my-auto mr-1"
-      />
+    <>
+      <form className="" onSubmit={handleSubmit(onSubmit)}>
+        <InputTextarea
+          id="textarea"
+          label="textarea"
+          register={register}
+          classnameDiv="p-5 m-5  flex gap-4 align-middle    w-1/4 rounded-lg "
+          classnameInput="border-2 border-black  px-5"
+          classnameLabel="my-auto"
+          maxValue={10}
+        />
+        <div className="toast toast-end toast-middle">
+          <div className="alert alert-info">
+            <ErrorMessage errors={errors} name={'textarea'} />
+          </div>
+          <div className="alert alert-info">
+            <ErrorMessage errors={errors} name={'text'} />
+          </div>
+        </div>
 
-      <InputData
-        id="data"
-        label="Data"
-        register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle "
-        classnameinput="border-2 border-black px-5"
-        classnamelabel="my-auto mr-6"
-      />
-      <InputTime
-        id="Tempo"
-        label="Tempo"
-        register={register}
-        classnamediv="p-5 m-5  flex gap-4 align-middle "
-        classnameinput="border-2 border-black px-5"
-        classnamelabel="my-auto mr-2"
-      />
-      <InputCheckboxGroup
-        label={['opção 1', 'opção 2', 'opção 3']}
-        options={['opção 1', 'opção 2', 'opção 3']}
-        register={register}
-        name="pesquisacaixa"
-        classnamediv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg flex flex-col "
-        classnameinput="border-2 border-black  px-5 gap-2"
-        classnamelabel="my-auto m-2"
-      />
-
-      <MultiSelectInput
-        name="selecioneopcoes"
-        control={control}
-        options={options}
-        classnamediv="mt-5 mb-2 ml-5 pl-5  flex gap-4 align-middle "
-        classnameinput="mt-5 mb-2 ml-5 pl-5 border p-2 rounded-lg flex flex-wrap gap-2 items-center bg-white"
-        classnamelabel="block text-lg font-medium"
-        initialvalue="Escolha multiplas opções "
-      />
-
-      <button
-        className=" mx-5 my-2 px-4 rounded-xl bg-slate-400 "
-        type="submit"
-      >
-        {' '}
-        enviar normal{' '}
-      </button>
-
-      {/* SetValue button */}
-      <button
-        type="button"
-        onClick={() => setValue('areadetexto', 'valor atualizado')}
-        className="mx-5 my-2 px-4 rounded-xl bg-blue-400"
-      >
-        Set Value
-      </button>
-    </form>
+        <InputSearch
+          id="search"
+          label="search"
+          register={register}
+          classnameDiv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg "
+          classnameInput="border-2 border-black  px-5"
+          classnameLabel="my-auto"
+        />
+        <InputText
+          id="text"
+          label="text"
+          register={register}
+          classnameDiv="p-5 m-5  flex gap-4 align-middle "
+          classnameInput="border-2 border-black px-5"
+          classnameLabel="my-auto mr-6"
+          maxValue={5}
+        />
+        <ErrorMessage errors={errors} name={'texto'} />
+        <InputNumber
+          id="number"
+          label="number"
+          register={register}
+          classnameDiv="p-5 m-5  flex gap-4 align-middle "
+          classnameInput="border-2 border-black px-5"
+          classnameLabel="my-auto mr-1"
+        />
+        <InputData
+          id="date"
+          label="date"
+          register={register}
+          classnameDiv="p-5 m-5  flex gap-4 align-middle "
+          classnameInput="border-2 border-black px-5"
+          classnameLabel="my-auto mr-6"
+        />
+        <InputTime
+          id="Time"
+          label="Time"
+          register={register}
+          classnameDiv="p-5 m-5  flex gap-4 align-middle "
+          classnameInput="border-2 border-black px-5"
+          classnameLabel="my-auto mr-2"
+        />
+        <InputCheckboxGroup
+          label={['option 1', 'option 2', 'option 3']}
+          options={['option 1', 'option 2', 'option 3']}
+          register={register}
+          name="checkbox"
+          classnameDiv="p-5 m-5  flex gap-4 align-middle  bg-slate-400  w-1/4 rounded-lg flex flex-col "
+          classnameInput="border-2 border-black  px-5 gap-2"
+          classnameLabel="my-auto m-2"
+        />
+        <MultiSelectInput
+          name="select"
+          control={control}
+          options={options}
+          classnameDiv="mt-5 mb-2 ml-5 pl-5  flex gap-4 align-middle "
+          classnameInput="mt-5 mb-2 ml-5 pl-5 border p-2 rounded-lg flex flex-wrap gap-2 items-center bg-white"
+          classnameLabel="block text-lg font-medium"
+          initialValue="Escolha multiplas opções "
+        />
+        <button
+          className=" mx-5 my-2 px-4 rounded-xl bg-slate-400 "
+          type="submit"
+        >
+          {' '}
+          enviar normal{' '}
+        </button>
+        {/* SetValue button */}
+        <button
+          type="button"
+          onClick={() => setValue('textarea', 'valor atualizado')}
+          className="mx-5 my-2 px-4 rounded-xl bg-blue-400"
+        >
+          Set Value
+        </button>
+      </form>
+    </>
   );
 }

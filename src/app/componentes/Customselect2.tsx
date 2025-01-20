@@ -10,20 +10,20 @@ interface MultiSelectInputProps {
   name: string;
   control: any;
   options: OptionType[];
-  classnamediv: string;
-  classnamelabel: string;
-  classnameinput: string;
-  initialvalue?: string;
+  classnameDiv: string;
+  classnameLabel: string;
+  classnameInput: string;
+  initialValue?: string;
 }
 
 const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
   name,
   control,
   options,
-  classnamediv,
-  classnamelabel,
-  classnameinput,
-  initialvalue = 'selecione multiplas opções ',
+  classnameDiv,
+  classnameLabel,
+  classnameInput,
+  initialValue = 'selecione multiplas opções ',
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -79,13 +79,13 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
 
           return (
             <div>
-              <div className={classnamediv}>
-                <label htmlFor={name} className={classnamelabel}>
-                  {initialvalue}
+              <div className={classnameDiv}>
+                <label htmlFor={name} className={classnameLabel}>
+                  {initialValue}
                 </label>
               </div>
 
-              <div className={classnameinput}>
+              <div className={classnameInput}>
                 {selectedOptions.map((option) => (
                   <div
                     key={option.value}
@@ -108,7 +108,7 @@ const MultiSelectInput: React.FC<MultiSelectInputProps> = ({
                 <input
                   type="text"
                   className="border-none outline-none flex-1"
-                  placeholder={initialvalue}
+                  placeholder={initialValue}
                   value={inputValue}
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}

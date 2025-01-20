@@ -7,18 +7,18 @@ interface InputCheckboxGroupProps {
   label: string[];
   options: string[];
   register: UseFormRegister<any>;
-  classnamediv: string;
-  classnamelabel: string;
-  classnameinput: string;
+  classnameDiv: string;
+  classnameLabel: string;
+  classnameInput: string;
   name: string;
 }
 
 const InputCheckboxGroup: React.FC<InputCheckboxGroupProps> = ({
   label,
   options,
-  classnamediv,
-  classnamelabel,
-  classnameinput,
+  classnameDiv,
+  classnameLabel,
+  classnameInput,
   register,
 
   name,
@@ -26,15 +26,15 @@ const InputCheckboxGroup: React.FC<InputCheckboxGroupProps> = ({
 }) => {
   return (
     <div>
-      <div className={classnamediv}>
+      <div className={classnameDiv}>
         {options.map((option, index) => (
           <div key={option}>
-            <label htmlFor={label[index]} className={classnamelabel}>
+            <label htmlFor={label[index]} className={classnameLabel}>
               {option}
             </label>
             <input
               {...rest}
-              className={classnameinput}
+              className={classnameInput}
               type="checkbox"
               id={label[index]}
               value={option}
